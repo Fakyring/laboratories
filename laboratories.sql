@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 04 2021 г., 04:55
--- Версия сервера: 10.4.11-MariaDB
--- Версия PHP: 7.4.5
+-- Время создания: Июл 05 2022 г., 11:48
+-- Версия сервера: 10.4.19-MariaDB
+-- Версия PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `laboratories`
 --
+CREATE DATABASE IF NOT EXISTS `laboratories` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `laboratories`;
 
 -- --------------------------------------------------------
 
@@ -254,6 +256,14 @@ CREATE TABLE `logs` (
   `element` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Дамп данных таблицы `logs`
+--
+
+INSERT INTO `logs` (`id`, `_table`, `element`) VALUES
+(1, 'usr', 1),
+(2, 'usr', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -382,6 +392,13 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `surname`, `name`, `patronymic`, `role`, `remember_token`, `enabled`) VALUES
+(1, 'admin@gmail.com', '$2y$10$v333f8DJPv2Ul9aScIfcBOcR60dyanPSewDCqMlVwTG0QSZ2fP7YW', 'change-me', 'change-me', 'change-me', 1, '1FcP5wQ0HEPG8nNVRR9H2UcipTU7D4aR1RZ11FPTaN5PYVeNTkbUVh8BoWv3', 1);
 
 --
 -- Триггеры `users`
@@ -610,7 +627,7 @@ ALTER TABLE `lab_attributes_values`
 -- AUTO_INCREMENT для таблицы `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `passports`
@@ -658,7 +675,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
